@@ -1,0 +1,102 @@
+<h3>User Component</h3>
+<h5> Property binding example</h5>
+<button class="btn btn-primary" [disabled]="!allowUser">Add User</button>
+<!-- example of string interpolation and property binding result will be same -->
+<div>
+    <div> String Interpollatin example : {{ allowUser }}</div>
+    <div class="row">
+        Property Binding Example:
+        <div [innerText]="allowUser"> </div>
+    </div>
+</div>
+
+<hr>
+
+<h5> Event binding example</h5>
+<button class="btn btn-primary" [disabled]="!allowUser" (click)="chageUserCreatedStatus()">Change User Status</button>
+<div>
+    {{ userCreatedStatus }}
+</div>
+<hr>
+<h5> $Event binding example and ngModel benifits</h5>
+<div class="row">
+    <div class="col-md-3">
+        <div class="my-2">
+            <label for="">User Name</label>
+            <input type="text" class="form-control" (input)="onUpdateUser($event)" />
+            <p>{{ userName }}</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="my-2">
+            <label for="">User Name with Two way binding</label>
+            <input type="text" class="form-control" [(ngModel)]="userNameNgModel" />
+            <p>{{ userNameNgModel }}</p>
+        </div>
+    </div>
+</div>
+
+<hr>
+<h5>*ngIf directive</h5>
+<div class="container row">
+    <div class="col-md-3">
+        <h5>*ngIf structural directive</h5>
+        <div class="my-2 ">
+            <input type="text" class="form-control" [(ngModel)]="createdUser" />
+            <p *ngIf="isUserCreated">
+                User is created with User name <strong> {{ createdUser }} </strong>
+            </p>
+            <button class="btn my-2 btn-primary  justify-content-end" (click)="createUser()">Create User </button>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <h5>*ngIf structural directive with ngTemplate</h5>
+        <div class="my-2 ">
+            <input type="text" class="form-control" [(ngModel)]="createdUser" />
+            <p *ngIf="isUserCreated; else noUser">
+                User is created with User name <strong> {{ createdUser }} </strong>
+            </p>
+            <ng-template #noUser>
+                <p>No user is created</p>
+            </ng-template>
+            <button class="btn my-2 btn-primary  justify-content-end" (click)="createUser()">Create User </button>
+        </div>
+    </div>
+</div>
+
+<hr>
+<h5>ngStyle atribute directive</h5>
+<div class="container row">
+    <div class="col-md-8">
+        <div class="my-2 ">
+            <app-user></app-user>
+            <app-user></app-user>
+            <app-user></app-user>
+        </div>
+    </div>
+</div>
+
+<hr>
+<h5>ngClass atribute directive</h5>
+<div class="container row">
+    <div class="col-md-8">
+        <div class="my-2 ">
+            <app-user></app-user>
+            <app-user></app-user>
+            <app-user></app-user>
+        </div>
+    </div>
+</div>
+
+<hr>
+<h5>*ngFor structural directive</h5>
+<div class="container row">
+    <div class="col-md-8">
+        <div class="my-2 ">
+            <input type="text" class="form-control" [(ngModel)]="createdName" />
+            <button class="btn my-2 btn-primary  justify-content-end" (click)="changeNgForUserCreatedStatus()">Create
+                User </button>
+            <app-user *ngFor="let user of users"></app-user>
+        </div>
+    </div>
+</div>

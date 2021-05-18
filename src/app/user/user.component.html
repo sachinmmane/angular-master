@@ -1,0 +1,7 @@
+<div [ngStyle]="{'background-color': getBackgroundColor(),  
+'color':'white'}" [ngClass]="{'offline' : userStatus === 'offline' }" class="my-2">
+    <!-- Interpolation is always return string
+        We can pass data through function as well in the interpolation    
+    -->
+    {{ 'User' }} with ID {{ userId }} is {{ getUserStatus() }}
+</div>
